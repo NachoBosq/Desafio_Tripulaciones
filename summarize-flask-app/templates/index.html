@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Video for Summary</h1>
+        <form action="/video" method="post" enctype="multipart/form-data">
+            <input type="file" name="video" accept="video/mp4" required>
+            <input type="text" name="youtube_link" placeholder="YouTube Link" required>
+            <input type="text" name="event_id" placeholder="Event ID" required>
+            <button type="submit">Get Summary</button>
+        </form>
+        {% if summary %}
+        <h2>Summary:</h2>
+        <p>{{ summary }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
